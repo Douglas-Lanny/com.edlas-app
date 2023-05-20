@@ -6,7 +6,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import java.util.Objects;
+
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "empleados")
@@ -31,15 +34,34 @@ public class Empleado {
     @Column(name = "puestoDeTrabajo", nullable = false)
     private int puestoDeTrabajo;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "fechaNacimiento", nullable = false)
+    private Date fechaNacimiento;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "fechaVinculacion", nullable = false)
+    private Date fechaVinculacion;
+
     public Empleado() {
     }
 
-    public Empleado(Long id, String nombre, String nombreUsuario, int area, int puestoDeTrabajo) {
+    /**
+     * @param id
+     * @param nombre
+     * @param nombreUsuario
+     * @param area
+     * @param puestoDeTrabajo
+     * @param fechaNacimiento
+     */
+    public Empleado(Long id, String nombre, String nombreUsuario, int area, int puestoDeTrabajo, Date fechaNacimiento,
+            Date fechaVinculacion) {
         this.id = id;
         this.nombre = nombre;
         this.nombreUsuario = nombreUsuario;
         this.area = area;
         this.puestoDeTrabajo = puestoDeTrabajo;
+        this.fechaNacimiento = fechaNacimiento;
+        this.fechaVinculacion = fechaVinculacion;
     }
 
     public Long getId() {
@@ -92,6 +114,22 @@ public class Empleado {
 
     public void setPuestoDeTrabajo(int puestoDeTrabajo) {
         this.puestoDeTrabajo = puestoDeTrabajo;
+    }
+
+    public Date getFechaNacimiento() {
+        return this.fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public Date getFechaVinculacion() {
+        return this.fechaVinculacion;
+    }
+
+    public void setFechaVinculacion(Date fechaVinculacion) {
+        this.fechaVinculacion = fechaVinculacion;
     }
 
 }
