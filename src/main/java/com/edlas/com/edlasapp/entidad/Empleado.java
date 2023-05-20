@@ -42,6 +42,9 @@ public class Empleado {
     @Column(name = "fechaVinculacion", nullable = false)
     private Date fechaVinculacion;
 
+    @Column(name = "porcentajePropina")
+    private Float porcentajePropina;
+
     public Empleado() {
     }
 
@@ -54,7 +57,7 @@ public class Empleado {
      * @param fechaNacimiento
      */
     public Empleado(Long id, String nombre, String nombreUsuario, int area, int puestoDeTrabajo, Date fechaNacimiento,
-            Date fechaVinculacion) {
+            Date fechaVinculacion, Float porcentajePropina) {
         this.id = id;
         this.nombre = nombre;
         this.nombreUsuario = nombreUsuario;
@@ -130,6 +133,14 @@ public class Empleado {
 
     public void setFechaVinculacion(Date fechaVinculacion) {
         this.fechaVinculacion = fechaVinculacion;
+    }
+
+    public Float getPorcentajePropina() {
+        return porcentajePropina;
+    }
+
+    public void setPorcentajePropina(Float porcentajePropina) {
+        this.porcentajePropina = porcentajePropina;
     }
 
 }
